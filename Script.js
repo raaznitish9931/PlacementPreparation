@@ -1,8 +1,11 @@
+
+
 function toggleSection(sectionId) {
     const allSections = document.querySelectorAll('.syllabus-section');
     allSections.forEach(section => {
         section.style.display = 'none';
     });
+
     const selectedSection = document.getElementById(sectionId);
     if (selectedSection) {
         selectedSection.style.display = (selectedSection.style.display === 'none' || selectedSection.style.display === '') ? 'block' : 'none';
@@ -11,74 +14,75 @@ function toggleSection(sectionId) {
 
 function toggleCompanyDetails(company) {
     const details = document.getElementById('company-details');
-    details.style.display = 'block';
     const paperPatternImg = document.getElementById('company-image-img');
     const syllabusImg = document.getElementById('syllabus-image-img');
+    
+    details.style.display = 'block';
+
     switch (company) {
         case 'tcs':
-            paperPatternImg.src = 'TCS.jpg';
-            syllabusImg.src = 'TCS-Syllabus.jpg';
+            updateCompanyImages('TCS.jpg', 'TCS-Syllabus.jpg');
             break;
         case 'accenture':
-            paperPatternImg.src = 'Accenture.jpg';
-            syllabusImg.src = 'Accenture-Syllabus.jpg';
+            updateCompanyImages('Accenture.jpg', 'Accenture-Syllabus.jpg');
             break;
         case 'capgemini':
-            paperPatternImg.src = 'Capgemini.jpg';
-            syllabusImg.src = 'Capgemini-Syllabus.jpg';
+            updateCompanyImages('Capgemini.jpg', 'Capgemini-Syllabus.jpg');
             break;
         case 'quantify':
-            paperPatternImg.src = 'Quantify.jpg';
-            syllabusImg.src = 'Quantify-Syllabus.jpg';
+            updateCompanyImages('Quantify.jpg', 'Quantify-Syllabus.jpg');
             break;
         case 'ltimindtree':
-            paperPatternImg.src = 'LTIMindtree.jpg';
-            syllabusImg.src = 'LTIMindtree-Syllabus.jpg';
+            updateCompanyImages('LTIMindtree.jpg', 'LTIMindtree-Syllabus.jpg');
             break;
         case 'infosys':
-            paperPatternImg.src = 'Infosys.jpg';
-            syllabusImg.src = 'Infosys-Syllabus.jpg';
+            updateCompanyImages('Infosys.jpg', 'Infosys-Syllabus.jpg');
             break;
         case 'wipro':
-            paperPatternImg.src = 'Wipro.jpg';
-            syllabusImg.src = 'Wipro-Syllabus.jpg';
+            updateCompanyImages('Wipro.jpg', 'Wipro-Syllabus.jpg');
             break;
         case 'hexaware':
-            paperPatternImg.src = 'Hexaware.jpg';
-            syllabusImg.src = 'Hexaware-Syllabus.jpg';
+            updateCompanyImages('Hexaware.jpg', 'Hexaware-Syllabus.jpg');
             break;
         case 'cognizant':
-            paperPatternImg.src = 'Cognizant.jpg';
-            syllabusImg.src = 'Cognizant-Syllabus.jpg';
+            updateCompanyImages('Cognizant.jpg', 'Cognizant-Syllabus.jpg');
             break;
         case 'deloitte':
-            paperPatternImg.src = 'Deloitte.jpg';
-            syllabusImg.src = 'Deloitte-Syllabus.jpg';
+            updateCompanyImages('Deloitte.jpg', 'Deloitte-Syllabus.jpg');
             break;
         case 'oracle':
-            paperPatternImg.src = 'Oracle.jpg';
-            syllabusImg.src = 'Oracle-Syllabus.jpg';
+            updateCompanyImages('Oracle.jpg', 'Oracle-Syllabus.jpg');
             break;
         case 'saplabs':
-            paperPatternImg.src = 'SAPLabs.jpg';
-            syllabusImg.src = 'SAPLabs-Syllabus.jpg';
+            updateCompanyImages('SAPLabs.jpg', 'SAPLabs-Syllabus.jpg');
             break;
         case 'cisco':
-            paperPatternImg.src = 'Cisco.jpg';
-            syllabusImg.src = 'Cisco-Syllabus.jpg';
+            updateCompanyImages('Cisco.jpg', 'Cisco-Syllabus.jpg');
             break;
         default:
             break;
     }
+
     toggleImage('company-image');
     toggleImage('syllabus-image');
 }
 
+function updateCompanyImages(paperPattern, syllabus) {
+    const paperPatternImg = document.getElementById('company-image-img');
+    const syllabusImg = document.getElementById('syllabus-image-img');
+    paperPatternImg.src = paperPattern;
+    syllabusImg.src = syllabus;
+}
+
 function toggleImage(imageId) {
     const imgDiv = document.getElementById(imageId);
-    if (imgDiv.style.display === 'none' || imgDiv.style.display === '') {
-        imgDiv.style.display = 'block';
-    } else {
-        imgDiv.style.display = 'none';
-    }
+    imgDiv.style.display = (imgDiv.style.display === 'none' || imgDiv.style.display === '') ? 'block' : 'none';
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const imgDivs = ['company-image', 'syllabus-image'];
+    imgDivs.forEach(function(id) {
+        const imgDiv = document.getElementById(id);
+        imgDiv.style.display = 'none';
+    });
+});
